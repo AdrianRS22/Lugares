@@ -25,12 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         //Se define el metodo para el login
         binding.btLogin.setOnClickListener{
-            haceLogin();
+            haceLogin()
         }
 
         //Se define el metodo para el registro
         binding.btRegister.setOnClickListener{
-            haceRegister();
+            haceRegister()
         }
     }
 
