@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:text="@string/msg_nombre" />
+        android:hint="@string/msg_nombre" />
 
     <EditText
         android:id="@+id/et_correo"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        tools:text="@string/msg_correo" />
+        android:hint="@string/msg_correo" />
 
     <EditText
         android:id="@+id/et_telefono"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="phone"
-        tools:text="@string/msg_telefono" />
+        android:hint="@string/msg_telefono" />
 
     <EditText
         android:id="@+id/et_web"
@@ -37,11 +37,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:text="@string/msg_web" />
+        android:hint="@string/msg_web" />
 
     <Button
         android:id="@+id/bt_agregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bt_agregar" />
+        android:hint="@string/bt_agregar" />
 </LinearLayout>
