@@ -1,6 +1,10 @@
 package com.example.lugares.ui.lugar
 
+import android.Manifest
 import android.app.AlertDialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -32,8 +36,16 @@ class UpdateLugarFragment : Fragment() {
         binding.etCorreo.setText(args.lugar.correo)
         binding.etTelefono.setText(args.lugar.telefono)
         binding.etWeb.setText(args.lugar.sitioWeb)
+        binding.tvLongitud.text = args.lugar.longitud.toString()
+        binding.tvLatitud.text = args.lugar.latitud.toString()
+        binding.tvAltura.text = args.lugar.altura.toString()
 
         binding.btActualizar.setOnClickListener { updateLugar()}
+        binding.btEmail.setOnClickListener { escribirCorreo() }
+        binding.btPhone.setOnClickListener { realizarLlamada() }
+        binding.btWhatsapp.setOnClickListener {  enviarWhatsApp() }
+        binding.btWeb.setOnClickListener { verWeb() }
+        binding.btLocation.setOnClickListener { verMapa() }
 
         setHasOptionsMenu(true)
 
@@ -49,6 +61,81 @@ class UpdateLugarFragment : Fragment() {
             deleteLugar()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun realizarLlamada() {
+        val recurso = binding.etTelefono.text.toString()
+        if (recurso.isNotEmpty()) {
+            val accion = Intent(Intent.ACTION_CALL)
+            accion.data = Uri.parse("tel:$recurso")
+            if (requireActivity().checkSelfPermission(Manifest.permission.CALL_PHONE) !=
+                PackageManager.PERMISSION_GRANTED) {
+                requireActivity()
+                    .requestPermissions(arrayOf(Manifest.permission.CALL_PHONE),105)
+            } else {
+                requireActivity().startActivity(accion)
+            }
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun enviarWhatsApp(){
+        val telefono = binding.etTelefono.text.toString()
+        if (telefono.isNotEmpty()) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            val uri = "whatsapp://send?phone=506$telefono&text=" + getString(R.string.msg_saludos)
+            intent.setPackage("com.whatsapp")
+            intent.data = Uri.parse(uri)
+            startActivity(intent)
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun escribirCorreo() {
+        val recurso = binding.etCorreo.text.toString()
+        if (recurso.isNotEmpty()) {
+            val accion = Intent(Intent.ACTION_SEND)
+            accion.type="message/rfc822"
+            accion.putExtra(Intent.EXTRA_EMAIL,arrayOf(recurso))
+            accion.putExtra(
+                Intent.EXTRA_SUBJECT,
+                getString(R.string.msg_saludos)+" "+binding.etNombre.text)
+            accion.putExtra(Intent.EXTRA_TEXT,getString(R.string.msg_mensaje_correo))
+            startActivity(accion)
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun verWeb(){
+        val sitioWeb = binding.etWeb.text.toString()
+        if (sitioWeb.isNotEmpty()) {
+            val uri = Uri.parse("http://$sitioWeb")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun verMapa(){
+        val latitud = binding.tvLatitud.text.toString().toDouble()
+        val longitud = binding.tvLongitud.text.toString().toDouble()
+
+        if (latitud.isFinite() && longitud.isFinite()) {
+            val location = Uri.parse("geo:$latitud,$longitud?z=18")
+            val intent = Intent(Intent.ACTION_VIEW, location)
+            startActivity(intent)
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun updateLugar() {

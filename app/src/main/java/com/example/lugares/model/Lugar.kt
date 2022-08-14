@@ -24,7 +24,7 @@ data class Lugar(
     @ColumnInfo(name="latitud")
     val latitud: Double?,
     @ColumnInfo(name="altura")
-    val altura: Int?,
+    val altura: Double?,
     @ColumnInfo(name="rutaAudio")
     val rutaAudio: String?,
     @ColumnInfo(name="rutaImagen")
