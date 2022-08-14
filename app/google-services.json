@@ -33,43 +33,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:356723262098:android:09d48831b7607d8697dc4b",
-        "android_client_info": {
-          "package_name": "com.lugares_v"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "356723262098-eh8ja3jpl64q3bnl3e00fv3gn7nci2l0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.lugares_v",
-            "certificate_hash": "d68c9d7cf6260329e61ab905fe2f6353c33d13cb"
-          }
-        },
-        {
-          "client_id": "356723262098-js99uk93qgecfu74ffla4ol2fv8o2mh5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCbd_lQmtDNpHjIZ7eTB68j1ItgLA9LXEA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "356723262098-js99uk93qgecfu74ffla4ol2fv8o2mh5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"

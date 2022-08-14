@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.lugares.databinding.FragmentUpdateLugarBinding
 import com.example.lugares.model.Lugar
 import com.example.lugares.viewmodel.LugarViewModel
@@ -23,6 +25,8 @@ class UpdateLugarFragment : Fragment() {
     private var _binding: FragmentUpdateLugarBinding? = null
     private val binding get() = _binding!!
     private lateinit var lugarViewModel: LugarViewModel
+
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +50,24 @@ class UpdateLugarFragment : Fragment() {
         binding.btWhatsapp.setOnClickListener {  enviarWhatsApp() }
         binding.btWeb.setOnClickListener { verWeb() }
         binding.btLocation.setOnClickListener { verMapa() }
+
+        if(args.lugar.rutaAudio?.isNotEmpty() == true){
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource(args.lugar.rutaAudio)
+            binding.btPlay.isEnabled = true
+        }else{
+            binding.btPlay.isEnabled = false
+        }
+
+        if(args.lugar.rutaImagen?.isNotEmpty() == true){
+            Glide.with(requireContext())
+                .load(args.lugar.rutaImagen)
+                .fitCenter()
+                .into(binding.imagen)
+        }
+
+        binding.btPlay.setOnClickListener { mediaPlayer.start() }
+
 
         setHasOptionsMenu(true)
 
