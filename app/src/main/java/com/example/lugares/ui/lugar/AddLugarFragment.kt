@@ -81,7 +81,7 @@ class AddLugarFragment : Fragment() {
         val altura = binding.tvAltura.text.toString().toDouble()
 
         if(validos(nombre, correo, telefono, web)){
-            var lugar = Lugar(0,nombre,correo,telefono,web,longitud,latitud,altura,"","")
+            var lugar = Lugar("",nombre,correo,telefono,web,longitud,latitud,altura,"","")
             lugarViewModel.addLugar(lugar)
             Toast.makeText(requireContext(), getString(R.string.msg_lugar_added), Toast.LENGTH_LONG).show()
         } else {
