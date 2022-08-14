@@ -9,6 +9,7 @@ plugins {
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: "com.google.gms.google-services"
+
 android.buildFeatures.viewBinding true
 
 android {

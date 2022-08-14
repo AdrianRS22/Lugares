@@ -28,7 +28,7 @@
             android:id="@+id/imagen"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/msg_imagen"
+            android:contentDescription=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre"
             tools:srcCompat="@tools:sample/avatars" />

@@ -43,5 +43,5 @@
         android:id="@+id/bt_agregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/bt_agregar" />
+        android:hint="@string/bt_addLugar" />
 </LinearLayout>

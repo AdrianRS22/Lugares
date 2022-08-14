@@ -19,10 +19,12 @@ data class Lugar(
     val telefono: String?,
     @ColumnInfo(name="sitioWeb")
     val sitioWeb: String?,
+    @ColumnInfo(name="longitud")
+    val longitud: Double?,
     @ColumnInfo(name="latitud")
     val latitud: Double?,
     @ColumnInfo(name="altura")
-    val altura: Double?,
+    val altura: Int?,
     @ColumnInfo(name="rutaAudio")
     val rutaAudio: String?,
     @ColumnInfo(name="rutaImagen")

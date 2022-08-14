@@ -40,11 +40,11 @@ class AddLugarFragment : Fragment() {
         var web = binding.etWeb.text.toString()
 
         if(validos(nombre, correo, telefono, web)){
-            var lugar = Lugar(0,nombre,correo,telefono,web,0.0,0.0,"","")
+            var lugar = Lugar(0,nombre,correo,telefono,web,0.0,0.0,0,"","")
             lugarViewModel.addLugar(lugar)
-            Toast.makeText(requireContext(), getString(R.string.msg_lugar_agregado), Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.msg_lugar_added), Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(requireContext(), getString(R.string.msg_faltan_datos), Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.msg_lugar_update), Toast.LENGTH_LONG).show()
         }
         findNavController().navigate(R.id.action_addLugarFragment_to_nav_lugar)
     }
