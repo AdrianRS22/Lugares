@@ -54,6 +54,7 @@ class UpdateLugarFragment : Fragment() {
         if(args.lugar.rutaAudio?.isNotEmpty() == true){
             mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(args.lugar.rutaAudio)
+            mediaPlayer.prepare()
             binding.btPlay.isEnabled = true
         }else{
             binding.btPlay.isEnabled = false
@@ -67,7 +68,6 @@ class UpdateLugarFragment : Fragment() {
         }
 
         binding.btPlay.setOnClickListener { mediaPlayer.start() }
-
 
         setHasOptionsMenu(true)
 
