@@ -11,7 +11,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_lugar">Lugares</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_gallery">Mapa</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -62,4 +62,5 @@
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
     <string name="todo">Por definir</string>
+    <string name="google_maps_key" translatable="false">AIzaSyCMLwmwgxJEXJu4-vQ_sd7T5Jqpv6CQ-a0</string>
 </resources>
